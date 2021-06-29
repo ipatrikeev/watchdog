@@ -31,7 +31,7 @@ https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
       {
          "my_chat_member":{
             "chat":{
-               "id": <CHANNEL_ID>,
+               "id": "<CHANNEL_ID>",
                "title":"Service Monitoring",
                "type":"channel"
             }
