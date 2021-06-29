@@ -39,7 +39,7 @@ func (n *Notifier) notifyAll(msg string) {
 
 func (n *Notifier) Validate() error {
 	if len(n.Senders) == 0 {
-		return errors.New("no senders specified")
+		return errors.New("no notifiers specified")
 	}
 	return nil
 }

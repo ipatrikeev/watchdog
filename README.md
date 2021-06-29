@@ -2,6 +2,21 @@
 
 Watchdog is a simple service for monitoring other services
 
+## Config structure
+
+```yaml
+entities:
+  - name: "Example"
+    health-url: "https://example.com/health"
+    check-period: "1m"
+    valid-statuses: [ 200, 204 ]
+notifiers:
+  - name: "telegram"
+    params:
+      token: "<BOT_TOKEN>"
+      channel-id: "<CHANNEL_ID>"
+```
+
 ## Notifiers
 
 Notifiers send status messages about monitored services' health
@@ -40,19 +55,4 @@ https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
    ]
 }
 
-```
-
-## Config structure
-
-```yaml
-entities:
-  - name: "Example"
-    health-url: "https://example.com/health"
-    check-period: "1m"
-    valid-statuses: [ 200, 204 ]
-senders:
-  - name: "telegram"
-    params:
-      token: "<BOT_TOKEN>"
-      channel-id: "<CHANNEL_ID>"
 ```

@@ -33,11 +33,11 @@ func main() {
 
 	senders, err := parseSenders(cfg)
 	if err != nil {
-		log.Fatalf("Couldn't parse senders: %v", err)
+		log.Fatalf("Couldn't parse notifiers: %v", err)
 	}
 	notifier := notify.Notifier{Senders: senders}
 	if err = notifier.Validate(); err != nil {
-		log.Fatalf("Invalid notifiier: %v", err)
+		log.Fatalf("Invalid notifiiers: %v", err)
 	}
 
 	for _, e := range cfg.Entities {

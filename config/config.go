@@ -33,5 +33,5 @@ type MessageSender struct {
 
 type AppConfig struct {
 	Entities []MonitoredEntity
-	Senders  []MessageSender
+	Senders  []MessageSender `yaml:"notifiers"`
 }
