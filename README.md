@@ -15,13 +15,15 @@ notifiers:
     params:
       token: "<BOT_TOKEN>"
       channel-id: "<CHANNEL_ID>"
+  - name: "console"
 ```
 
 ## Notifiers
 
 Notifiers send status messages about monitored services' health
 
-Currently, only *Telegram* notifier is supported
+### Console
+Print statuses to the console
 
 ### Telegram
 

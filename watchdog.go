@@ -82,16 +82,20 @@ func parseSenders(cfg config.AppConfig) ([]notify.Sender, error) {
 	var senders []notify.Sender
 
 	for _, s := range cfg.Senders {
+		var sender notify.Sender
 		switch strings.ToLower(s.Name) {
 		case "telegram":
-			sender, err := notify.NewTelegramSender(s.Params)
+			var err error
+			sender, err = notify.NewTelegramSender(s.Params)
 			if err != nil {
 				return nil, err
 			}
-			senders = append(senders, sender)
+		case "console":
+			sender = &notify.ConsoleSender{}
 		default:
 			return nil, fmt.Errorf("unsupported sender type: %s", s.Name)
 		}
+		senders = append(senders, sender)
 	}
 
 	return senders, nil
