@@ -2,6 +2,16 @@
 
 Watchdog is a simple service for monitoring other services
 
+## How to run
+Compile and run *watchdog.go* file or use Dockerfile to run the app in docker.
+
+The app expects a config with service list to monitor. By default, *config.yml* is used from the base dir.
+
+You could specify a custom config file in another location by providing it through *-config-path* option:
+```yaml
+ go run watchdog.go -config-path /custom/path/config.yml
+```
+
 ## Config structure
 
 ```yaml
