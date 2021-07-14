@@ -20,6 +20,7 @@ entities:
     health-url: "https://example.com/health"
     check-period: "1m"
     valid-statuses: [ 200, 204 ]
+    fails-allowed: 3 # how many subsequent fails are allowed
 notifiers:
   - name: "telegram"
     params:

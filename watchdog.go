@@ -4,14 +4,15 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/ipatrikeev/watchdog/config"
-	"github.com/ipatrikeev/watchdog/notify"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/ipatrikeev/watchdog/config"
+	"github.com/ipatrikeev/watchdog/notify"
+	"gopkg.in/yaml.v2"
 )
 
 var cfgPath = flag.String("config-path", "./config.yml", "Path to YAML application config")

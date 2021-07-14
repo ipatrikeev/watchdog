@@ -10,6 +10,7 @@ type MonitoredEntity struct {
 	HealthUrl     string        `yaml:"health-url"`
 	CheckPeriod   time.Duration `yaml:"check-period"`
 	ValidStatuses []int         `yaml:"valid-statuses"`
+	FailsAllowed  int           `yaml:"fails-allowed"`
 }
 
 func (entity *MonitoredEntity) String() string {
