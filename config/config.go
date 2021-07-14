@@ -16,7 +16,7 @@ type MonitoredEntity struct {
 func (entity *MonitoredEntity) String() string {
 	failAllowedInfo := ""
 	if entity.FailsAllowed > 1 {
-		failAllowedInfo = ". Won't notify unless %d fails happen in a row"
+		failAllowedInfo = fmt.Sprintf(". Won't notify unless %d fails happen in a row", entity.FailsAllowed)
 	}
 	return fmt.Sprintf("%s (%s) checking every %v%s",
 		entity.Name, entity.HealthUrl, entity.CheckPeriod, failAllowedInfo)
