@@ -14,8 +14,12 @@ type MonitoredEntity struct {
 }
 
 func (entity *MonitoredEntity) String() string {
-	return fmt.Sprintf("%s (%s) checking every %v",
-		entity.Name, entity.HealthUrl, entity.CheckPeriod)
+	failAllowedInfo := ""
+	if entity.FailsAllowed > 1 {
+		failAllowedInfo = ". Won't notify unless %d fails happen in a row"
+	}
+	return fmt.Sprintf("%s (%s) checking every %v%s",
+		entity.Name, entity.HealthUrl, entity.CheckPeriod, failAllowedInfo)
 }
 
 func (entity *MonitoredEntity) CheckStatus(status int) bool {
