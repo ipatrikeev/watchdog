@@ -16,7 +16,7 @@ import (
 )
 
 var cfgPath = flag.String("config-path", "./config.yml", "Path to YAML application config")
-var apiTimeout = 3 * time.Second
+var apiTimeout = 10 * time.Second
 
 func main() {
 	flag.Parse()
