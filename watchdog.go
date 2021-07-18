@@ -67,16 +67,28 @@ func processCheck(entity config.MonitoredEntity, notifier notify.Notifier) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil || !entity.CheckStatus(resp.StatusCode) {
-		var info interface{}
-		if err == nil {
-			info = resp.Status
-		} else {
-			info = err
-		}
+		info := getFailInfo(resp, err)
 		notifier.Fail(entity, info)
 	} else {
 		notifier.Success(entity)
 	}
+}
+
+func getFailInfo(resp *http.Response, err error) interface{} {
+	var info string
+
+	if err == nil {
+		// try to read response body as it may contain useful info
+		bodyBytes, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			info = err.Error()
+		} else {
+			info = resp.Status + ": " + string(bodyBytes)
+		}
+	} else {
+		info = err.Error()
+	}
+	return info
 }
 
 func parseSenders(cfg config.AppConfig) ([]notify.Sender, error) {
